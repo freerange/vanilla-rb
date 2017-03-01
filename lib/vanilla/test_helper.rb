@@ -41,6 +41,11 @@ module Vanilla
       assert_equal expected.strip, last_response.body.strip
     end
 
+    def assert_response_body_matches(expected_pattern, uri)
+      get uri
+      assert_match expected_pattern, last_response.body
+    end
+
     def set_main_template(template_content)
       app.soup << {:name => "layout", :content => template_content}
     end

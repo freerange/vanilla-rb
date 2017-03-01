@@ -6,7 +6,7 @@ context "Every snip" do
     snips = app.soup.all_snips
     snips.each do |snip|
       expected_code = 200
-      expected_code = 500 if %w(test bad_dynasnip).include?(snip.name)
+      expected_code = 500 if %w(test bad_dynasnip layout).include?(snip.name)
       begin
         Timeout.timeout(1) do
           get snip.name

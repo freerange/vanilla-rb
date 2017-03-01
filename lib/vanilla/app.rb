@@ -135,7 +135,7 @@ module Vanilla
       when 'html', nil
         layout = layout_for(snip)
         if layout == snip
-          "Rendering of the current layout would result in infinite recursion."
+          raise "Rendering of the current layout would result in infinite recursion."
         else
           render(layout)
         end

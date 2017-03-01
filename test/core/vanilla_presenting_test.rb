@@ -28,7 +28,8 @@ context "When presenting" do
     end
 
     should "not allow rendering of the layout to produce infinite recursion" do
-      assert_response_body "Rendering of the current layout would result in infinite recursion.", "/layout"
+      assert_response_status 500, "/layout"
+      assert_response_body_matches %r{Rendering of the current layout would result in infinite recursion}, "/layout"
     end
   end
 
