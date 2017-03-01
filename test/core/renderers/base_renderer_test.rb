@@ -33,11 +33,12 @@ describe Vanilla::Renderers::Base do
     create_snip(:name => "another_snip", :content => "blah", :render_as => "Bold")
     assert_response_body "lets include <b>blah</b>", "/including_snip"
   end
-  
+
   context "when trying to include a missing snip" do
     should "return a string describing the missing snip" do
       create_snip(:name => 'blah', :content => 'include a {missing_snip}')
-      assert_response_body "include a [snip 'missing_snip' cannot be found]", "/blah"
+      assert_response_status 500, "/blah"
+      assert_response_body_matches %r{snip 'missing_snip' cannot be found}, "/blah"
     end
   end
 

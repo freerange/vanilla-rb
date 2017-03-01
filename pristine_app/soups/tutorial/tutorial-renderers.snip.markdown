@@ -63,7 +63,7 @@ The simplest renderer inherits from `Vanilla::Renderers::Base`, and reimplement 
     module Vanilla::Renderers
       class Bold < Base
         def process_text(content)
-          "<b>#{content}</b>"
+          "<b>" + content + "</b>"
         end
       end
     end

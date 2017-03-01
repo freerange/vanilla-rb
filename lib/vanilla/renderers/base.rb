@@ -78,7 +78,7 @@ module Vanilla
       end
 
       def render_missing_snip(snip_name)
-        "[snip '#{snip_name}' cannot be found]"
+        raise "snip '#{snip_name}' cannot be found"
       end
 
       # Default rendering behaviour. Subclasses shouldn't really need to touch this.
